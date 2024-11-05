@@ -1,2 +1,2 @@
 # fig_gen_template
-An opinionated template on organizing data and jupyter notebooks for generating multi-panel scientific figure entirely programmatically. 
+An opinionated template on organizing data and jupyter notebooks for generating and formatting multi-panel scientific figures, entirely programmatically. 
