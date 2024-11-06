@@ -1,0 +1,63 @@
+# Default plotting configuration parameters
+
+# Font settings
+font_family: Arial
+axis_label_size: 14
+tick_label_size: 10
+# Legend settings
+legend_font_size: 12
+legend_marker_size: 8
+
+title_font_size: 16
+panel_text_label_size: 20
+
+# Figure dimensions (in pixels)
+subfigure_width: 760
+subfigure_height: 350
+
+composite_figure_width: 760
+composite_figure_height: 700
+
+# Color schemes
+continuous_color_scheme: viridis
+# - "#440154"  # viridis color scheme (perceptually uniform)
+# - "#414487"
+# - "#2a788e"
+# - "#22a884"
+# - "#7ad151"
+# - "#fde725"
+
+categorical_colors:
+  - "#E69F00"  # colorblind-friendly palette
+  - "#56B4E9"
+  - "#009E73"
+  - "#F0E442"
+  - "#0072B2"
+  - "#D55E00"
+  - "#CC79A7"
+  - "#000000"
+
+# Plot styling
+line_width: 1.5
+marker_size: 6
+grid_alpha: 0.3
+
+# Spacing
+figure_margins:
+  left: 0.1
+  right: 0.9
+  top: 0.9
+  bottom: 0.1
+  padding: 0
+
+# Scale factors
+# Default dpi for svg_utils. Not sure how to change this in SVG utils. Defined in svg_utils.src.svgutils.common.Unit
+dpi: 90 
+# Matplotlib messes up the dimensions when saving to svg, consistently undersizing the figure.
+# I think it has something to do with the points (pt) to pixel unit conversion. As in, 90 pixels per 72 points.
+# It appears that matplotlib is using the 72 as DPI when saving to svg... so accounting for that with a scaling factor of 1.25 helps.
+# However, tight layout can change aspect ration, so x_scale factor of 1.36 can improve aesthetics. 
+mpl_x_scale_factor: 1.36 # 1.25 may also work.
+mpl_y_scale_factor: 1.25
+
+aquarel_theme: 'minimal_light'
