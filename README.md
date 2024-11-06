@@ -19,6 +19,8 @@ The data for generating the figure should be stored in a directory, and the path
 
 The composite figure notebook should collect all of the individual subpanels (as SVG files) into a single figure, and manage the formatting of the figure (e.g. size, aspect ratio, etc.) using svgutils (https://svgutils.readthedocs.io/en/latest/). It should also save the output in SVG and PNG format. 
 
+Why the focus on SVG? SVG files are vector graphics that can be scaled without loss of quality, making them ideal for scientific figures that may need to be resized. They can also be easily edited and manipulated programmatically using tools like svgutils. Additionally, SVGs support transparency and can be converted to other formats like PNG while maintaining high quality.
+
 Plotting configuration parameters are defined globally in `plotting_config.yaml`. These parameters are imported into each notebook, and can be overridden as needed on a per-figure basis. Plotting helper functions can be placed in `utils.py` and will be automatically imported into each notebook. Example plotting helper functions may include svg to png conversion, adding significance bars to bar plots, setting up matplotlib with desired plotting style, etc...
 
 
