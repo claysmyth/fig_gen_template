@@ -30,5 +30,5 @@ viz = [
     "kaleido",
 ]
 
-# [tool.hatch.build.targets.wheel]
-# packages = ["src/fig_gen_template"]
+[tool.hatch.build.targets.wheel]
+packages = ["."]
