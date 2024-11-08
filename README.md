@@ -27,7 +27,9 @@ Plotting configuration parameters are defined globally in `plotting_config.yaml`
 
 ## Installation of necessary dependencies from source
 (as in, from within the cloned repo)
+
 Ideally use Python version <= 3.12.
+
 Note: brew is for MacOS.
 
 ```bash
