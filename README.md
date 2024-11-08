@@ -1,5 +1,6 @@
 # fig_gen_template
-An opinionated template on organizing data and jupyter notebooks for generating and formatting multi-panel scientific figures, entirely programmatically. 
+An opinionated template on organizing data and jupyter notebooks for generating and formatting multi-panel scientific figures, entirely programmatically. This template leverages SVG file formats with relevant python packages to organize subfigures into multi-panel, publication quality figures. The benefit of this approach is that adjustments to manuscript figures require only a few notebook cell executions, instead of importing into a third party software for resizing, alignment, etc... Hopefully, this enables faster iterating through the many small, tedious adjustments often necessary for making a scientific figure legible and pretty. Also, the file organization allows for git version control of data and plotting code to improve reproducibility. Users can also mix-and-match different plotting libraries into a single multi-panel figure with relative ease.
+
 
 ## Structure
 The template suggests the following structure:
