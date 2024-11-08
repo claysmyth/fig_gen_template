@@ -1,5 +1,5 @@
 # fig_gen_template
-An opinionated template on organizing data and jupyter notebooks for generating and formatting multi-panel scientific figures, entirely programmatically. This template leverages SVG file formats with relevant python packages to organize subfigures into multi-panel, publication quality figures. The benefit of this approach is that adjustments to manuscript figures require only a few notebook cell executions, instead of importing into a third party software for resizing, alignment, etc... Hopefully, this enables faster iterating through the many small, tedious adjustments often necessary for making a scientific figure legible and pretty. Also, the file organization allows for git version control of data and plotting code to improve reproducibility. Users can also mix-and-match different plotting libraries into a single multi-panel figure with relative ease.
+An opinionated template on organizing data and Jupyter notebooks for generating and formatting multi-panel scientific figures, entirely programmatically. This template leverages SVG file formats with relevant Python packages to organize subfigures into multi-panel, publication quality figures. The benefit of this approach is that adjustments to manuscript figures require only a few notebook cell executions, instead of importing into a third party software for resizing, alignment, etc... Hopefully, this enables faster iterating through the many small, tedious adjustments often necessary for making a scientific figure legible and pretty. Also, the file organization allows for git version control of data and plotting code to improve reproducibility. Users can also mix-and-match different plotting libraries into a single multi-panel figure with relative ease.
 
 
 ## Structure
@@ -7,7 +7,7 @@ The template suggests the following structure:
 
 - `plotting_config.yaml`: default plotting configuration parameters
 - `fig_1/`: example figure
-    - `data.csv`: example data. As CSV (or parquet) file or directory of csv (or parquet) files
+    - `data.csv`: example data. As CSV (or parquet) file or directory of CSV (or parquet) files
     - `fig_1A.ipynb`: example figure generation notebook
     - `fig_1A.svg`: example figure output
     - `fig_1B.ipynb`: example figure generation notebook
@@ -16,18 +16,18 @@ The template suggests the following structure:
     - `composite_fig.svg`: example composite figure output
     - `composite_fig.png`: example composite figure output, with transparent background
 
-The data for generating the figure should be stored in a directory, and the path to this directory should be provided to the figure generation notebook as an input argument. Each subpanel should have its own dedicated notebook, which can be run independently of the others. Ideally, minimal data processing is done in these notebooks, and the data is saved in a format that is easy to load into the notebook, as close to it's final format as possible. The individual subplanel (or subplot) notebooks can generate plots using any desired plotting library, but should ultimately save the output in SVG format. Other languages (e.g. R, Matlab, etc.) can be used to generate subpanels, as long as the output is in SVG format.
+The data for generating the figure should be stored in a directory, and the path to this directory should be provided to the figure generation notebook as an input argument. Each subpanel should have its own dedicated notebook, which can be run independently of the others. Ideally, minimal data processing is done in these notebooks, and the data is saved in a format that is easy to load into the notebook, as close to its final format as possible. The individual subpanel (or subplot) notebooks can generate plots using any desired plotting library, but should ultimately save the output in SVG format. Other languages (e.g. R, MATLAB, etc.) can be used to generate subpanels, as long as the output is in SVG format.
 
 The composite figure notebook should collect all of the individual subpanels (as SVG files) into a single figure, and manage the formatting of the figure (e.g. size, aspect ratio, etc.) using svgutils (https://svgutils.readthedocs.io/en/latest/). It should also save the output in SVG and PNG format. 
 
 Why the focus on SVG? SVG files are vector graphics that can be scaled without loss of quality, making them ideal for scientific figures that may need to be resized. They can also be easily edited and manipulated programmatically using tools like svgutils. Additionally, SVGs support transparency and can be converted to other formats like PNG while maintaining high quality. SVGs are viewable in web browsers, which can be useful for debugging.
 
-Plotting configuration parameters are defined globally in `plotting_config.yaml`. These parameters are imported into each notebook, and can be overridden as needed on a per-figure basis. Plotting helper functions can be placed in `utils.py` and will be automatically imported into each notebook. Example plotting helper functions may include svg to png conversion, adding significance bars to bar plots, setting up matplotlib with desired plotting style, etc...
+Plotting configuration parameters are defined globally in `plotting_config.yaml`. These parameters are imported into each notebook, and can be overridden as needed on a per-figure basis. Plotting helper functions can be placed in `utils.py` and will be automatically imported into each notebook. Example plotting helper functions may include SVG to PNG conversion, adding significance bars to bar plots, setting up matplotlib with desired plotting style, etc...
 
 
 ## Installation of necessary dependencies from source (as in, from within the cloned repo)
 
-Ideally use python version <= 3.12.
+Ideally use Python version <= 3.12.
 Note: brew is for MacOS.
 
 ```bash
@@ -52,7 +52,7 @@ Inside the `fig_example` directory, run the following jupyter notebooks to see a
 
 - `panel_A_gen.ipynb`: generates subfigure/panel A
 - `panel_B_C_gen.ipynb`: generates subfigures/panels B and C
-- `composite_figure_gen.ipynb`: generates the composite figure and converts the results SVG to PNG.
+- `composite_figure_gen.ipynb`: generates the composite figure and converts the results from SVG to PNG.
 
 
 ## Recommended plotting libraries
