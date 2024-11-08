@@ -25,8 +25,8 @@ Why the focus on SVG? SVG files are vector graphics that can be scaled without l
 Plotting configuration parameters are defined globally in `plotting_config.yaml`. These parameters are imported into each notebook, and can be overridden as needed on a per-figure basis. Plotting helper functions can be placed in `utils.py` and will be automatically imported into each notebook. Example plotting helper functions may include SVG to PNG conversion, adding significance bars to bar plots, setting up matplotlib with desired plotting style, etc...
 
 
-## Installation of necessary dependencies from source (as in, from within the cloned repo)
-
+## Installation of necessary dependencies from source
+(as in, from within the cloned repo)
 Ideally use Python version <= 3.12.
 Note: brew is for MacOS.
 
@@ -40,7 +40,7 @@ with optional visualization dependencies:
 pip install -e ".[viz]"
 ```
 
-If using playwright to convert SVGs to PNGs, then proceed with playwrite installation:
+If using playwright to convert SVGs to PNGs, then proceed with playwright installation:
 
 ```bash
 playwright install
