@@ -142,6 +142,73 @@ async def convert_svg_to_png_playwright_async(svg_path, output_path, device_scal
         os.remove(scaled_svg_path)
 
 
+def add_significance_annotation_mpl(ax, x1, y1, x2, y2, num_stars=1):
+    """Add significance annotation between two points with specified number of stars to a seaborn or matplotlib plot.
+    
+    Parameters:
+    -----------
+    ax : matplotlib.axes.Axes
+        The axis to add the annotation to
+    x1, y1 : float
+        Coordinates of first point
+    x2, y2 : float 
+        Coordinates of second point
+    num_stars : int, optional
+        Number of stars to display (default 1)
+    """
+    # Draw the line between points
+    # Draw main horizontal line
+    ax.plot([x1, x2], [y1, y2], 'k-', linewidth=1)
+    
+    # Add vertical bars at each end perpendicular to the line
+    bar_height = 0.01  # Height of vertical bars
+    # Calculate angle of main line
+    angle = np.arctan2(y2-y1, x2-x1)
+    # Add 90 degrees (pi/2) to get perpendicular angle
+    perp_angle = angle + np.pi/2
+    
+    # Calculate offsets for perpendicular bars
+    dx = bar_height * np.cos(perp_angle)
+    dy = bar_height * np.sin(perp_angle)
+    
+    # Draw perpendicular bars at each end
+    ax.plot([x1, x1+dx], [y1-dy, y1], 'k-', linewidth=1)  # Left bar
+    ax.plot([x2, x2+dx], [y2-dy, y2], 'k-', linewidth=1)  # Right bar
+
+    # Calculate midpoint
+    mid_x = x1 + (x2-x1)/2
+    mid_y = y1 + (y2-y1)/2
+    
+    # Calculate offset for stars (perpendicular to line)
+    star_offset = 0.02  # Adjust this value to move stars up/down
+    star_dx = star_offset * np.cos(perp_angle)
+    star_dy = star_offset * np.sin(perp_angle)
+
+    if x1 == x2:
+        star_dx = 0
+        xytext = (10, 0)
+    elif y1 == y2:
+        star_dy = 0
+        xytext = (0, 5)
+    
+    # Place stars near the higher y value with vertical offset from line
+    if num_stars > 0:
+        stars = '*' * num_stars
+        fontsize = 16
+    else:
+        stars = 'ns'
+        fontsize = 12
+        
+    ax.annotate(stars, 
+                xy=(mid_x + star_dx, mid_y + star_dy), # Offset perpendicular to line
+                xytext=xytext, # No additional offset needed
+                textcoords='offset points',
+                ha='center',
+                va='center',
+                fontsize=fontsize,
+                rotation=np.degrees(angle))
+
+
 ## Deprecated functions for trying to resize matplotlib generated svgs
 
 # def convert_units(value, from_unit, to_unit, config):
